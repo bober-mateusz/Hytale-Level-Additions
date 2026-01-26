@@ -2,6 +2,9 @@ plugins {
     `maven-publish`
     id("hytale-mod") version "0.+"
 }
+val hytaleServerVersion = providers
+    .gradleProperty("hytale_server_version")
+    .get()
 
 group = "com.venomie"
 version = "0.1.0"
@@ -17,6 +20,7 @@ repositories {
 dependencies {
     compileOnly(libs.jetbrains.annotations)
     compileOnly(libs.jspecify)
+    compileOnly("com.hypixel.hytale:Server:$hytaleServerVersion")
 }
 
 hytale {
@@ -50,7 +54,9 @@ tasks.named<ProcessResources>("processResources") {
         "plugin_website" to findProperty("plugin_website"),
 
         "plugin_main_entrypoint" to findProperty("plugin_main_entrypoint"),
-        "plugin_author" to findProperty("plugin_author")
+        "plugin_author" to findProperty("plugin_author"),
+
+        "hytale_server_version" to findProperty("hytale_server_version")
     )
 
     filesMatching("manifest.json") {
