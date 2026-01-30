@@ -13,6 +13,7 @@ public class ExamplePlugin extends JavaPlugin {
     private static ExamplePlugin instance;
     private ComponentType<EntityStore, MiningLevelComponent> miningComponent;
 
+
     public ExamplePlugin(JavaPluginInit init) {
         super(init);
         instance = this;

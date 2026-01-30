@@ -120,6 +120,10 @@ val syncAssets = tasks.register<Copy>("syncAssets") {
     }
 }
 
+dependencies {
+    implementation("com.hypixel.hytale:Server:$hytaleServerVersion")
+}
+
 afterEvaluate {
     // Now Gradle will find it, because the plugin has finished working
     val targetTask = tasks.findByName("runServer") ?: tasks.findByName("server")
